@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:manage_app/auth/login.dart';
 import 'package:manage_app/core/theme/app_theme.dart';
+import 'package:manage_app/report/report.dart';
 import 'package:manage_app/splash_screen.dart';
 
 void main() {
@@ -25,7 +26,13 @@ class MyApp extends StatelessWidget {
             theme: AppTheme.light,
             darkTheme: AppTheme.dark,
             themeMode: ThemeMode.light,
-            home: const SplashScreenPage(),
+            supportedLocales: const [
+              Locale('en', 'US'),
+              Locale('es', 'ES'),
+              Locale('fr', 'FR'),
+              Locale('vi'),
+            ],
+            home: const ReportPage(),
           );
         });
   }

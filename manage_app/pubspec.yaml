@@ -40,6 +40,10 @@ dependencies:
   lottie: ^2.7.0
   page_transition: ^2.1.0
   carousel_slider: ^4.2.1
+  data_table_2: ^2.5.8
+  calendar_date_picker2: ^0.5.3
+  custom_date_range_picker: ^1.0.10
+  dropdown_search: ^5.0.0
 
 dev_dependencies:
   flutter_test:
