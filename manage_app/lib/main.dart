@@ -31,7 +31,6 @@ class MyApp extends StatelessWidget {
               Locale('en', 'US'),
               Locale('es', 'ES'),
               Locale('fr', 'FR'),
-              Locale('vi'),
             ],
             builder: EasyLoading.init(),
             home: const SplashScreenPage(),

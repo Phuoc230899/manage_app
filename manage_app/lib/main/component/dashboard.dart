@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
@@ -55,6 +56,8 @@ class _DashBoardPageState extends State<DashBoardPage>
   Map<int, AnimationController> _accountCotroller = {};
   Map<int, AnimationController> _videoCotroller = {};
 
+
+
   @override
   void initState() {
     // TODO: implement initState
@@ -80,6 +83,7 @@ class _DashBoardPageState extends State<DashBoardPage>
     for (var vidcontroller in _videoCotroller.values) {
       vidcontroller.dispose();
     }
+    
   }
 
   @override
@@ -88,7 +92,7 @@ class _DashBoardPageState extends State<DashBoardPage>
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color(0xFFD6E2EA),
-        body: CustomScrollView(slivers: [
+        body: CustomScrollView( slivers: [
           SliverAppBar(
             leading: const SizedBox(),
             backgroundColor: const Color(0xFFD6E2EA),
