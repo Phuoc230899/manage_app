@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:manage_app/auth/login.dart';
 import 'package:manage_app/core/theme/app_theme.dart';
@@ -32,7 +33,8 @@ class MyApp extends StatelessWidget {
               Locale('fr', 'FR'),
               Locale('vi'),
             ],
-            home: const ReportPage(),
+            builder: EasyLoading.init(),
+            home: const SplashScreenPage(),
           );
         });
   }

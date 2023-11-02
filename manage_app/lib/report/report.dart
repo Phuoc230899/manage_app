@@ -1,4 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:manage_app/core/service/api.dart';
 import 'package:manage_app/report/component/tiktok-account.dart';
 
 class ReportPage extends StatefulWidget {
@@ -9,6 +13,19 @@ class ReportPage extends StatefulWidget {
 }
 
 class _ReportPageState extends State<ReportPage> {
+  Timer? timer;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    EasyLoading.addStatusCallback((status) {
+      if (status == EasyLoadingStatus.dismiss) {
+        timer?.cancel();
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -23,9 +40,15 @@ class _ReportPageState extends State<ReportPage> {
                 'Report',
                 style: Theme.of(context).textTheme.headlineMedium,
               )),
-              leading: const Icon(
-                Icons.arrow_back,
-                color: Colors.black,
+              leading: IconButton(
+                onPressed: () {
+                  timer?.cancel();
+                  Navigator.pop(context);
+                },
+                icon: const Icon(
+                  Icons.arrow_back,
+                  color: Colors.black,
+                ),
               ),
               actions: const [
                 Icon(
@@ -46,16 +69,18 @@ class _ReportPageState extends State<ReportPage> {
                 ],
               ),
             ),
-            body: const TabBarView(
+            body: TabBarView(
               children: [
-                TiktokAccount(),
-                Center(
+                TiktokAccount(
+                  timer: timer,
+                ),
+                const Center(
                   child: Text('Tab2'),
                 ),
-                Center(
+                const Center(
                   child: Text('Tab3'),
                 ),
-                Center(
+                const Center(
                   child: Text('Tab4'),
                 ),
               ],

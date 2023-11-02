@@ -1,7 +1,11 @@
+import 'dart:async';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
+import 'package:manage_app/report/report.dart';
 
 class DashBoardPage extends StatefulWidget {
   const DashBoardPage({super.key});
@@ -159,72 +163,82 @@ class _DashBoardPageState extends State<DashBoardPage>
                 items: item_account.map((item) {
                   var controller = _accountCotroller[item_account.indexWhere(
                       (element) => element['name'] == item['name'])];
-                  return Card(
-                    elevation: 5.0,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0)),
-                    child: SizedBox(
-                      width: size.width,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Expanded(
-                              flex: 2,
-                              child: Stack(children: [
-                                ClipRRect(
-                                  borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(15),
-                                      topRight: Radius.circular(15)),
-                                  child: Image.asset(
-                                    item['image'],
-                                    fit: BoxFit.cover,
-                                    width: double.infinity,
+                  return InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => const ReportPage(),
+                        ),
+                      );
+                    },
+                    child: Card(
+                      elevation: 5.0,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0)),
+                      child: SizedBox(
+                        width: size.width,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Expanded(
+                                flex: 2,
+                                child: Stack(children: [
+                                  ClipRRect(
+                                    borderRadius: const BorderRadius.only(
+                                        topLeft: Radius.circular(15),
+                                        topRight: Radius.circular(15)),
+                                    child: Image.asset(
+                                      item['image'],
+                                      fit: BoxFit.cover,
+                                      width: double.infinity,
+                                    ),
                                   ),
-                                ),
-                                Positioned(
-                                    right: 10.w,
-                                    top: 10.h,
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        if (item['isBookmarks']) {
-                                          controller!.reverse();
-                                          item['isBookmarks'] = false;
-                                        } else {
-                                          controller!.forward();
-                                          item['isBookmarks'] = true;
-                                        }
-                                      },
-                                      child: Lottie.asset(
-                                          'assets/lotties/bookmark.json',
-                                          controller: controller,
-                                          onLoaded: (p0) {
-                                        if (item['isBookmarks']) {
-                                          controller!.forward();
-                                        } else {
-                                          controller!.reverse();
-                                        }
-                                      },
-                                          key: UniqueKey(),
-                                          width: 50.w,
-                                          height: 50.h),
-                                    ))
-                              ])),
-                          Expanded(
-                            flex: 1,
-                            child: Padding(
-                                padding: EdgeInsets.only(
-                                    top: 10.h, left: 10.w, right: 10.w),
-                                child: Text(
-                                  item['name'],
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyMedium
-                                      ?.copyWith(
-                                          fontWeight: FontWeight.w700,
-                                          fontSize: 18.h),
-                                )),
-                          )
-                        ],
+                                  Positioned(
+                                      right: 10.w,
+                                      top: 10.h,
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          if (item['isBookmarks']) {
+                                            controller!.reverse();
+                                            item['isBookmarks'] = false;
+                                          } else {
+                                            controller!.forward();
+                                            item['isBookmarks'] = true;
+                                          }
+                                        },
+                                        child: Lottie.asset(
+                                            'assets/lotties/bookmark.json',
+                                            controller: controller,
+                                            onLoaded: (p0) {
+                                          if (item['isBookmarks']) {
+                                            controller!.forward();
+                                          } else {
+                                            controller!.reverse();
+                                          }
+                                        },
+                                            key: UniqueKey(),
+                                            width: 50.w,
+                                            height: 50.h),
+                                      ))
+                                ])),
+                            Expanded(
+                              flex: 1,
+                              child: Padding(
+                                  padding: EdgeInsets.only(
+                                      top: 10.h, left: 10.w, right: 10.w),
+                                  child: Text(
+                                    item['name'],
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium
+                                        ?.copyWith(
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 18.h),
+                                  )),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   );

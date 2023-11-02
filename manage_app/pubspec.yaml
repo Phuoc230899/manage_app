@@ -43,7 +43,11 @@ dependencies:
   data_table_2: ^2.5.8
   calendar_date_picker2: ^0.5.3
   custom_date_range_picker: ^1.0.10
-  dropdown_search: ^5.0.0
+  dropdown_search: ^5.0.6
+  pie_chart: ^5.3.2
+  flutter_easyloading: ^3.0.5
+  fl_chart: ^0.64.0
+  tuple: ^2.0.2
 
 dev_dependencies:
   flutter_test:
@@ -72,6 +76,7 @@ flutter:
     - assets/riv/
     - assets/lotties/
     - assets/images/
+    - lib/model/data/tiktok-account/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
